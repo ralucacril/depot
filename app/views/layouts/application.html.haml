@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Pragprog Books Online Store
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body{:class => "#{controller.controller_name}"}
+    #banner
+      =image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf'
+      %span.title
+        #{@page_title}
+    #columns
+      #side
+        %ul
+          %li
+            %a{:href => "http://www...."} Home
+          %li
+            %a{:href => "http://www..../faq"} Questions
+          %li
+            %a{:href => "http://www..../news"} News
+          %li
+            %a{:href => "http://www..../contact"} Contact
+        .time
+          #{Time.now.strftime("%H:%M:%S")}
+          #{Time.now.strftime("%m/%d/%Y")}
+      #main
+        = yield
