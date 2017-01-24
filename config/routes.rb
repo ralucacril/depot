@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  resources :line_items
+  #resources :line_items
+  resources :line_items do
+    put 'decrement', on: :member
+  end
   resources :carts
   root 'store#index', as: 'store_index'
 
   resources :products
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
